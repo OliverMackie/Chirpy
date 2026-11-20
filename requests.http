@@ -1,0 +1,64 @@
+GET http://localhost:8080/api/healthz
+
+GET http://localhost:8080/admin/metrics
+
+POST http://localhost:8080/admin/reset HTTP/1.1
+
+POST http://localhost:8080/api/users HTTP/1.1
+content-type: application/json
+
+{
+  "email": "walt@breakingbad.com",
+  "password": "123456"
+}
+
+POST http://localhost:8080/api/login HTTP/1.1
+
+{
+  "email": "walt@breakingbad.com",
+  "password": "123456"
+}
+
+POST http://localhost:8080/api/chirps HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaGlycHlfYWNjZXNzIiwic3ViIjoiY2Y3ZmRlMjktM2EzYS00OWNlLWIzYzItMDQ5ZGFkYTFhNTFiIiwiZXhwIjoxNzk1MTkxMzM0LCJpYXQiOjE3OTUxODc3MzR9.KcCaexeMSXXbsET2MVUtzIa9treA1zwxkNLq17tYWRQ
+
+
+{
+  "body": "Hello, world!",
+  "user_id": "123e4567-e89b-12d3-a456-426614174000"
+}
+
+GET http://localhost:8080/api/chirps/2e298f96-5c5c-4311-a0fd-1949984b491d HTTP/1.1
+
+POST http://localhost:8080/api/refresh HTTP/1.1
+content-type: application/json
+Authorization: Bearer e4d73a02795cf14549857fc193d6e57d02c64e368576c3d1bf56eccf8f444ac0
+
+
+POST http://localhost:8080/api/revoke HTTP/1.1
+content-type: application/json
+Authorization: Bearer e4d73a02795cf14549857fc193d6e57d02c64e368576c3d1bf56eccf8f444ac0
+
+PUT http://localhost:8080/api/users HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaGlycHlfYWNjZXNzIiwic3ViIjoiY2Y3ZmRlMjktM2EzYS00OWNlLWIzYzItMDQ5ZGFkYTFhNTFiIiwiZXhwIjoxNzk1MTkyMjE3LCJpYXQiOjE3OTUxODg2MTd9.0OM1W-dQXl8FOn6bhmYcp1SlEfBdgJjpCABrSkMhoKA
+
+{
+  "email": "walt@breakingbad2.com",
+  "password": "1234567"
+}
+
+DELETE http://localhost:8080/api/chirps/2e298f96-5c5c-4311-a0fd-1949984b491d HTTP/1.1 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjaGlycHlfYWNjZXNzIiwic3ViIjoiY2Y3ZmRlMjktM2EzYS00OWNlLWIzYzItMDQ5ZGFkYTFhNTFiIiwiZXhwIjoxNzk1MTkzMDI2LCJpYXQiOjE3OTUxODk0MjZ9.LGIhMCtyn2VoWljGJtQ3pmmZGTrqaQ2yOXqsx-aPNbA
+
+POST http://localhost:8080/api/polka/webhooks HTTP/1.1
+content-type: application/json
+Authorization: ApiKey THE_KEY_HERE
+
+{
+  "event": "user.upgraded",
+  "data": {
+    "user_id": "cf7fde29-3a3a-49ce-b3c2-049dada1a51b"
+  }
+}
